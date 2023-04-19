@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
   
   @State private var isAnimating: Bool = false
+  @State private var imageScale: CGFloat = 1.0
   
   var body: some View {
     NavigationView {
@@ -23,6 +24,19 @@ struct ContentView: View {
           .opacity(isAnimating ? 1 : 0)
           .offset(y: isAnimating ? 0 : 250)
           .animation(.easeOut(duration: 1.0), value: isAnimating)
+          .scaleEffect(imageScale)
+          .onTapGesture(count: 2) {
+            if imageScale == 1 {
+              withAnimation(.spring()) {
+                imageScale = 5
+              }
+            } else {
+              withAnimation(.spring()) {
+                imageScale = 1
+              }
+            }
+          }
+        
       }
       .navigationTitle("Pinch and Zoom")
       .navigationBarTitleDisplayMode(.inline)
