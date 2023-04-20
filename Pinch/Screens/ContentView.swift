@@ -11,6 +11,14 @@ struct ContentView: View {
   
   @State private var isAnimating: Bool = false
   @State private var imageScale: CGFloat = 1.0
+  @State private var imageOffset: CGSize = .zero
+  
+  func resetImageImageState() {
+    return withAnimation(.spring()) {
+      imageScale = 1
+      imageOffset = .zero
+    }
+  }
   
   var body: some View {
     NavigationView {
@@ -25,17 +33,29 @@ struct ContentView: View {
           .offset(y: isAnimating ? 0 : 250)
           .animation(.easeOut(duration: 1.0), value: isAnimating)
           .scaleEffect(imageScale)
+          .offset(x: imageOffset.width, y: imageOffset.height)
           .onTapGesture(count: 2) {
             if imageScale == 1 {
               withAnimation(.spring()) {
                 imageScale = 5
               }
             } else {
-              withAnimation(.spring()) {
-                imageScale = 1
-              }
+              resetImageImageState()
             }
           }
+          .gesture(
+            DragGesture().onChanged({ gesture in
+              withAnimation {
+                imageOffset = gesture.translation
+              }
+            }).onEnded({ gesture in
+              if imageScale <= 1 {
+                resetImageImageState()
+              } else {
+                imageOffset = gesture.translation
+              }
+            })
+          )
         
       }
       .navigationTitle("Pinch and Zoom")
