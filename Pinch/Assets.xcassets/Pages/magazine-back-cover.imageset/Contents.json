@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "Frame 2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Frame 2@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "magazine-back-cover@3x.jpg",
+      "filename" : "Frame 2@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
