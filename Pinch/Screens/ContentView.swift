@@ -87,9 +87,7 @@ struct ContentView: View {
             }
             
             Button {
-              withAnimation(.spring()) {
-                resetImageImageState()
-              }
+              resetImageImageState()
             } label: {
               ControlImageView(imageName: "arrow.up.left.and.down.right.magnifyingglass")
             }
