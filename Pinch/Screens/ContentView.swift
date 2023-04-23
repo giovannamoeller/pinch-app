@@ -12,6 +12,10 @@ struct ContentView: View {
   @State private var isAnimating: Bool = false
   @State private var imageScale: CGFloat = 1.0
   @State private var imageOffset: CGSize = .zero
+  @State private var isDrawerOpen: Bool = false
+  
+  let pages: [Page] = pagesData
+  @State private var pageIndex: Int = 0
   
   func resetImageImageState() {
     return withAnimation(.spring()) {
@@ -24,7 +28,7 @@ struct ContentView: View {
     NavigationView {
       ZStack {
         Color.clear
-        Image("magazine-front-cover")
+        Image(pages[pageIndex].imageName)
           .resizable()
           .aspectRatio(contentMode: .fit)
           .cornerRadius(10)
@@ -132,6 +136,43 @@ struct ContentView: View {
         }
         .padding(.bottom, 30),
         alignment: .bottom
+      )
+      .overlay(
+        HStack(spacing: 12) {
+          Image(systemName: isDrawerOpen ? "chevron.compact.right" : "chevron.compact.left")
+            .resizable()
+            .scaledToFit()
+            .frame(height: 40)
+            .padding(8)
+            .foregroundStyle(.secondary)
+            .onTapGesture(perform: {
+              withAnimation(.easeOut(duration: 0.3)) {
+                isDrawerOpen.toggle()
+              }
+            })
+          ForEach(pages) { page in
+            Image(page.thumbnailName)
+              .resizable()
+              .scaledToFit()
+              .cornerRadius(8)
+              .shadow(radius: 4)
+              .opacity(isDrawerOpen ? 1 : 0)
+              .onTapGesture {
+                withAnimation(.easeOut(duration: 0.3)) {
+                  pageIndex = page.id - 1
+                }
+              }
+          }
+          Spacer()
+        }
+        .padding(EdgeInsets(top: 16, leading: 8, bottom: 16, trailing: 8))
+        .background(.ultraThinMaterial)
+        .cornerRadius(12)
+        .opacity(isAnimating ? 1 : 0)
+        .offset(x: isDrawerOpen ? 12 : UIScreen.main.bounds.width / 2)
+        .frame(width: UIScreen.main.bounds.width / 1.5)
+        .padding(.top, UIScreen.main.bounds.height / 12)
+        , alignment: .topTrailing
       )
     }
   }
