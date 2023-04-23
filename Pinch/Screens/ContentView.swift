@@ -136,7 +136,7 @@ struct ContentView: View {
       )
       .overlay(
         HStack(spacing: 12) {
-          Image(systemName: "chevron.compact.left")
+          Image(systemName: isDrawerOpen ? "chevron.compact.right" : "chevron.compact.left")
             .resizable()
             .scaledToFit()
             .frame(height: 40)
@@ -148,11 +148,11 @@ struct ContentView: View {
         .background(.ultraThinMaterial)
         .cornerRadius(12)
         .opacity(isAnimating ? 1 : 0)
-        .offset(x: isDrawerOpen ? 12 : UIScreen.main.bounds.width / 3)
-        .frame(width: UIScreen.main.bounds.width / 2)
+        .offset(x: isDrawerOpen ? 12 : UIScreen.main.bounds.width / 2)
+        .frame(width: UIScreen.main.bounds.width / 1.5)
         .padding(.top, UIScreen.main.bounds.height / 12)
         .onTapGesture(perform: {
-          withAnimation {
+          withAnimation(.easeOut(duration: 0.3)) {
             isDrawerOpen.toggle()
           }
         })
