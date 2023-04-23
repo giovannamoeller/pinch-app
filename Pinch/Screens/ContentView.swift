@@ -156,6 +156,11 @@ struct ContentView: View {
               .scaledToFit()
               .cornerRadius(8)
               .shadow(radius: 4)
+              .onTapGesture {
+                withAnimation(.easeOut(duration: 0.3)) {
+                  pageIndex = page.id - 1
+                }
+              }
           }
           Spacer()
         }
