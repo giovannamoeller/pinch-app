@@ -13,6 +13,7 @@
 		484E810F29F023CB00CFBB14 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 484E810E29F023CB00CFBB14 /* Preview Assets.xcassets */; };
 		48B0461E29F235AE002CE88E /* InfoPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B0461D29F235AE002CE88E /* InfoPanelView.swift */; };
 		48B0462329F2450A002CE88E /* ControlImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B0462229F2450A002CE88E /* ControlImageView.swift */; };
+		48B0462529F4E4BB002CE88E /* PageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B0462429F4E4BB002CE88E /* PageModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		484E810E29F023CB00CFBB14 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		48B0461D29F235AE002CE88E /* InfoPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPanelView.swift; sourceTree = "<group>"; };
 		48B0462229F2450A002CE88E /* ControlImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlImageView.swift; sourceTree = "<group>"; };
+		48B0462429F4E4BB002CE88E /* PageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		485AC1E029F079DD00FCA9A9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				48B0462429F4E4BB002CE88E /* PageModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48B0462329F2450A002CE88E /* ControlImageView.swift in Sources */,
+				48B0462529F4E4BB002CE88E /* PageModel.swift in Sources */,
 				484E810A29F023CA00CFBB14 /* ContentView.swift in Sources */,
 				484E810829F023CA00CFBB14 /* PinchApp.swift in Sources */,
 				48B0461E29F235AE002CE88E /* InfoPanelView.swift in Sources */,
