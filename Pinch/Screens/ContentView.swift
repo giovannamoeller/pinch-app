@@ -12,6 +12,7 @@ struct ContentView: View {
   @State private var isAnimating: Bool = false
   @State private var imageScale: CGFloat = 1.0
   @State private var imageOffset: CGSize = .zero
+  @State private var isDrawerOpen: Bool = false
   
   func resetImageImageState() {
     return withAnimation(.spring()) {
@@ -147,8 +148,14 @@ struct ContentView: View {
         .background(.ultraThinMaterial)
         .cornerRadius(12)
         .opacity(isAnimating ? 1 : 0)
-        .frame(width: 260)
+        .offset(x: isDrawerOpen ? 12 : UIScreen.main.bounds.width / 3)
+        .frame(width: UIScreen.main.bounds.width / 2)
         .padding(.top, UIScreen.main.bounds.height / 12)
+        .onTapGesture(perform: {
+          withAnimation {
+            isDrawerOpen.toggle()
+          }
+        })
         , alignment: .topTrailing
       )
     }
