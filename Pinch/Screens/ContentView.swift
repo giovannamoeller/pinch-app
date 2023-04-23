@@ -146,7 +146,7 @@ struct ContentView: View {
             .padding(8)
             .foregroundStyle(.secondary)
           ForEach(pages) { page in
-            Image(page.imageName)
+            Image(page.thumbnailName)
               .resizable()
               .scaledToFit()
               .cornerRadius(8)
