@@ -145,6 +145,11 @@ struct ContentView: View {
             .frame(height: 40)
             .padding(8)
             .foregroundStyle(.secondary)
+            .onTapGesture(perform: {
+              withAnimation(.easeOut(duration: 0.3)) {
+                isDrawerOpen.toggle()
+              }
+            })
           ForEach(pages) { page in
             Image(page.thumbnailName)
               .resizable()
@@ -161,11 +166,6 @@ struct ContentView: View {
         .offset(x: isDrawerOpen ? 12 : UIScreen.main.bounds.width / 2)
         .frame(width: UIScreen.main.bounds.width / 1.5)
         .padding(.top, UIScreen.main.bounds.height / 12)
-        .onTapGesture(perform: {
-          withAnimation(.easeOut(duration: 0.3)) {
-            isDrawerOpen.toggle()
-          }
-        })
         , alignment: .topTrailing
       )
     }
